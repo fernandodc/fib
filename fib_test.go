@@ -1,6 +1,6 @@
 package fib
 
-import(
+import (
 	"fmt"
 	"testing"
 )
@@ -12,8 +12,8 @@ func TestFib(t *testing.T) {
 }
 
 func TestFibCiclo(t *testing.T) {
-	pruebas := []struct{
-		n int
+	pruebas := []struct {
+		n        int
 		esperado int
 	}{
 		{0, 0},
@@ -26,15 +26,15 @@ func TestFibCiclo(t *testing.T) {
 	}
 
 	for _, prueba := range pruebas {
-		if resultado := FibCiclo(prueba.n); resultado != prueba.esperado {
+		if resultado := Ciclo(prueba.n); resultado != prueba.esperado {
 			t.Errorf("FibCiclo(%d) == %d, esperamos %d", prueba.n, resultado, prueba.esperado)
 		}
 	}
 }
 
 func TestFibRecursivo(t *testing.T) {
-	pruebas := []struct{
-		n int
+	pruebas := []struct {
+		n        int
 		esperado int
 	}{
 		{0, 0},
@@ -47,27 +47,27 @@ func TestFibRecursivo(t *testing.T) {
 	}
 
 	for _, prueba := range pruebas {
-		if resultado := FibRecursivo(prueba.n); resultado != prueba.esperado {
+		if resultado := Recursivo(prueba.n); resultado != prueba.esperado {
 			t.Errorf("FibRecursivo(%d) == %d, esperamos %d", prueba.n, resultado, prueba.esperado)
 		}
 	}
 }
 
 func BenchmarkFibCiclo(b *testing.B) {
-	for i:=0; i<b.N; i++ {
-		FibCiclo(25)
+	for i := 0; i < b.N; i++ {
+		Ciclo(25)
 	}
 }
 
 func BenchmarkFibRecursivo(b *testing.B) {
-	for i:=0; i<b.N; i++ {
-		FibRecursivo(25)
+	for i := 0; i < b.N; i++ {
+		Recursivo(25)
 	}
 }
 
 // Las funciones del paquete fib pueden interactuar entre sí.
 func Example() {
-	fmt.Println(FibRecursivo(FibCiclo(5)))
+	fmt.Println(Recursivo(Ciclo(5)))
 	// Output:
 	// 5
 }
@@ -75,8 +75,8 @@ func Example() {
 // FibCiclo recibe un int como argumento, el cual determina la posición en
 // la secuencia fibonacci del resultado, también un int. En este ejemplo, para
 // la posición 6 en la secuencia fibonacci, obtenemos el número 8.
-func ExampleFibCiclo() {
-	fmt.Println(FibCiclo(6))
+func ExampleCiclo() {
+	fmt.Println(Ciclo(6))
 	// Output:
 	// 8
 }
@@ -84,9 +84,8 @@ func ExampleFibCiclo() {
 // FibRecursivo recibe un int como argumento, el cual determina la posición en
 // la secuencia fibonacci del resultado, también un int. En este ejemplo, para
 // la posición 6 en la secuencia fibonacci, obtenemos el número 8.
-func ExampleFibRecursivo() {
-	fmt.Println(FibRecursivo(6))
+func ExampleRecursivo() {
+	fmt.Println(Recursivo(6))
 	// Output:
 	// 8
 }
-
