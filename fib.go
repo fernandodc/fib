@@ -1,8 +1,8 @@
 package fib
 
 // Fib calcula el 6to número de la secuencia fibonacci.
-func Fib() int {
-	return Recursivo(6)
+func Fib(n int) int {
+	return Recursivo(n)
 }
 
 // Ciclo func
